@@ -16,6 +16,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            minifyEnabled false
+            debuggable true
+            testCoverageEnabled false
+        }
     }
 }
 
@@ -25,4 +31,20 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
+
+    // Set this dependency to use JUnit 4 rules
+    androidTestCompile ('com.android.support.test:rules:0.4.1'){
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+    // Set this dependency to build and run Espresso tests
+    androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.1'){
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+    // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
+    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.1'){
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
 }
